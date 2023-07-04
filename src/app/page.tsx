@@ -10,11 +10,11 @@ export default function Home() {
         <div className="h-20">
           <Header />
         </div>
-        <div className="flex justify-between">
-          <div className="w-28">
+        <div className="">
+          <div className="">
             <NavBar />
           </div>
-          <div className="">
+          <div className="relative">
             <HomeContent />
           </div>
         </div>
