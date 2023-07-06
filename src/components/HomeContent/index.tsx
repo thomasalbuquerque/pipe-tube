@@ -1,5 +1,5 @@
 import React from 'react';
-import { MenuWidth } from '@/helpers/MenuWidth';
+import { MenuWidth } from '@/utils/MenuWidth';
 import clsx from 'clsx';
 interface props {
   menuOpen: boolean;

@@ -5,7 +5,7 @@ import { PiUsers } from 'react-icons/pi';
 import { PiUserList } from 'react-icons/pi';
 import { TbHelp } from 'react-icons/tb';
 import { AiOutlineLike } from 'react-icons/ai';
-import { MenuWidth } from '@/helpers/MenuWidth';
+import { MenuWidth } from '@/utils/MenuWidth';
 import clsx from 'clsx';
 
 interface props {
