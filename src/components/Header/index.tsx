@@ -7,11 +7,6 @@ const Header = () => {
         className={`fixed z-50 flex h-20 w-full items-center justify-between overflow-hidden bg-white py-1 shadow-md`}>
         <div className="m-2 flex flex-col-reverse gap-2 xsm:flex-row xsm:items-center sm:m-4 sm:flex-nowrap sm:gap-4">
           <img
-            className="w-4 pl-1 sm:w-5"
-            src="/hamburger-icon.png"
-            alt="hamburger menu icon"
-            id="openNav"></img>
-          <img
             className="w-16 px-1 xsm:px-2 sm:w-24"
             src="/pipetube-logo.png"
             alt="website logo pipe tube"
