@@ -15,11 +15,11 @@ interface props {
 
 const NavBar = ({ menuOpen, setMenuOpen }: props) => {
   const menuItems = [
-    { title: 'Home', icon: <HiOutlineHome size={23} /> },
-    { title: 'Subscriptions', icon: <PiUserList size={23} /> },
-    { title: 'Liked Videos', icon: <AiOutlineLike size={23} /> },
-    { title: 'Creators', icon: <PiUsers size={23} /> },
-    { title: 'Help', icon: <TbHelp size={23} /> },
+    { title: 'Home', icon: <HiOutlineHome /> },
+    { title: 'Subscriptions', icon: <PiUserList /> },
+    { title: 'Liked Videos', icon: <AiOutlineLike /> },
+    { title: 'Creators', icon: <PiUsers /> },
+    { title: 'Help', icon: <TbHelp /> },
   ];
   return (
     <>
@@ -30,8 +30,7 @@ const NavBar = ({ menuOpen, setMenuOpen }: props) => {
           !menuOpen && 'w-' + MenuWidth.menuClosed
         )}>
         <RxHamburgerMenu
-          className="cursor-pointer text-accent"
-          size={23}
+          className="cursor-pointer text-lg text-accent xsm:text-2xl"
           onClick={() => setMenuOpen(!menuOpen)}
         />
         <ul>
@@ -39,10 +38,12 @@ const NavBar = ({ menuOpen, setMenuOpen }: props) => {
             <li
               key={index}
               className="mt-6 flex h-8 items-center text-gray xsm:mt-8">
-              <span className="mr-2 text-2xl xsm:mr-4">{item.icon}</span>
+              <span className="mr-2 text-lg xsm:mr-4 xsm:text-2xl">
+                {item.icon}
+              </span>
               <span
                 className={clsx(
-                  'whitespace-nowrap font-sans text-sm ',
+                  'whitespace-nowrap font-sans text-xs xsm:text-sm ',
                   !menuOpen && 'invisible',
                   menuOpen && ''
                 )}>
