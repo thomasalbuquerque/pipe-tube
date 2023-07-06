@@ -14,7 +14,7 @@ export default function Home() {
         </div>
         <div className="">
           <div className="">
-            <NavBar />
+            <NavBar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
           </div>
           <div className="relative">
             <HomeContent />

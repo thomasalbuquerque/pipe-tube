@@ -2,15 +2,17 @@ import React from 'react';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { HiOutlineHome } from 'react-icons/hi';
 import { PiUsers } from 'react-icons/pi';
-import { BsPeople } from 'react-icons/bs';
 import { PiUserList } from 'react-icons/pi';
-import { SlLike } from 'react-icons/sl';
 import { TbHelp } from 'react-icons/tb';
 import { AiOutlineLike } from 'react-icons/ai';
+import { MenuWidth } from '@/helpers/MenuWidth';
 
-const NavBar = () => {
-  const [open, setOpen] = React.useState(false);
+interface props {
+  menuOpen: boolean;
+  setMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
+const NavBar = ({ menuOpen, setMenuOpen }: props) => {
   const menuItems = [
     { title: 'Home', icon: <HiOutlineHome size={20} /> },
     { title: 'Subscriptions', icon: <PiUserList size={20} /> },
@@ -21,11 +23,13 @@ const NavBar = () => {
   return (
     <>
       <div
-        className={`fixed h-screen p-5 duration-200 ${open ? 'w-44' : 'w-16'}`}>
+        className={`fixed h-screen p-5 duration-200 ${
+          menuOpen ? 'w-' + MenuWidth.menuOpen : 'w-' + MenuWidth.menuClosed
+        }`}>
         <RxHamburgerMenu
           className="cursor-pointer text-gray"
           size={24}
-          onClick={() => setOpen(!open)}
+          onClick={() => setMenuOpen(!menuOpen)}
         />
         <ul>
           {menuItems.map((item, index) => (
@@ -33,7 +37,7 @@ const NavBar = () => {
               <span className="mr-4 text-2xl">{item.icon}</span>
               <span
                 className={`whitespace-nowrap font-sans text-base ${
-                  !open ? 'invisible' : ''
+                  !menuOpen ? 'invisible' : ''
                 }`}>
                 {item.title}
               </span>
