@@ -25,13 +25,13 @@ const NavBar = ({ menuOpen, setMenuOpen }: props) => {
     <>
       <div
         className={clsx(
-          'fixed h-screen pl-1 pt-3 duration-200 xsm:p-5 ',
+          'fixed h-screen pl-3 pt-3 duration-200 xsm:p-5 ',
           menuOpen && 'w-' + MenuWidth.menuOpen,
           !menuOpen && 'w-' + MenuWidth.menuClosed
         )}>
         <RxHamburgerMenu
-          className="cursor-pointer text-gray"
-          size={27}
+          className="cursor-pointer text-accent"
+          size={23}
           onClick={() => setMenuOpen(!menuOpen)}
         />
         <ul>
