@@ -21,7 +21,7 @@ const NavBar = () => {
   return (
     <>
       <div
-        className={`fixed h-screen p-5 duration-200 ${open ? 'w-72' : 'w-16'}`}>
+        className={`fixed h-screen p-5 duration-200 ${open ? 'w-44' : 'w-16'}`}>
         <RxHamburgerMenu
           className="cursor-pointer text-gray"
           size={24}
