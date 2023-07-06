@@ -1,9 +1,18 @@
 import React from 'react';
+import { MenuWidth } from '@/helpers/MenuWidth';
+interface props {
+  menuOpen: boolean;
+}
 
-const HomeContent = () => {
+const HomeContent = ({ menuOpen }: props) => {
   return (
     <>
-      <div className="absolute left-52">
+      <div
+        className={`absolute duration-200 ${
+          menuOpen
+            ? 'left-' + MenuWidth.menuOpen
+            : 'left-' + MenuWidth.menuClosed
+        }`}>
         __________Lorem ipsum dolor sit amet consectetur adipisicing elit.
         Temporibus, ipsum dolores? Deserunt, quos numquam. Earum, delectus
         blanditiis. Beatae, laudantium quasi dolorem natus modi, impedit tempora

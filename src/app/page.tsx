@@ -17,7 +17,7 @@ export default function Home() {
             <NavBar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
           </div>
           <div className="relative">
-            <HomeContent />
+            <HomeContent menuOpen={menuOpen} />
           </div>
         </div>
       </main>
