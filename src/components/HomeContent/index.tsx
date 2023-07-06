@@ -3,10 +3,13 @@ import { MenuWidth } from '@/utils/MenuWidth';
 import clsx from 'clsx';
 import VideoCard from '../VideoCard';
 import { getYoutubeData } from '@/helpers/youtubeData/getVideosIds';
+import videos_data from '@/utils/videos_data.json';
 interface props {
   menuOpen: boolean;
 }
+
 const HomeContent = ({ menuOpen }: props) => {
+  const videos = JSON.parse(JSON.stringify(videos_data));
   return (
     <>
       <div
@@ -15,26 +18,17 @@ const HomeContent = ({ menuOpen }: props) => {
           menuOpen && `left-32 xsm:left-44`,
           !menuOpen && `left-12 xsm:left-16`
         )}>
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
-        <VideoCard />
+        {videos.map((video: any) => (
+          <VideoCard
+            thumbnailUrl={video.thumbnailUrl}
+            channelProfilePicUrl={video.channelProfilePicUrl}
+            videoTitle={video.videoTitle}
+            channelName={video.channelName}
+            viewCount={video.viewCount}
+            uploadDate={video.uploadDate}
+            videoUrl={video.videoUrl}
+          />
+        ))}
       </div>
     </>
   );

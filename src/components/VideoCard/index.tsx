@@ -1,10 +1,37 @@
 import React from 'react';
-
-const VideoCard = () => {
+interface props {
+  thumbnailUrl: string;
+  channelProfilePicUrl: string;
+  videoTitle: string;
+  channelName: string;
+  viewCount: string;
+  uploadDate: string;
+  videoUrl: string;
+}
+const VideoCard = ({
+  thumbnailUrl,
+  channelProfilePicUrl,
+  videoTitle,
+  channelName,
+  viewCount,
+  uploadDate,
+  videoUrl,
+}: props) => {
   return (
     <>
-      <div className="h-56 w-80 bg-slate-300">
-        <div className="h-44 w-80 rounded-md border bg-slate-600"></div>
+      <div className="flex h-auto w-96 flex-col text-gray">
+        <div className="relative flex h-[13.5rem] w-96 items-center justify-center overflow-hidden">
+          <img className="absolute" src={thumbnailUrl} />
+        </div>
+
+        <h3 className="pl-2 pt-1 text-base">{videoTitle}</h3>
+        <span className="pl-2 text-xs">{channelName}</span>
+        <div className="flex justify-between">
+          <span className="pl-2 text-xs">
+            Views: {Number(viewCount).toLocaleString('pt-BR')}
+          </span>
+          <span>{uploadDate}</span>
+        </div>
       </div>
     </>
   );
