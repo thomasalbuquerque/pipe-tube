@@ -6,6 +6,7 @@ import { PiUserList } from 'react-icons/pi';
 import { TbHelp } from 'react-icons/tb';
 import { AiOutlineLike } from 'react-icons/ai';
 import { MenuWidth } from '@/helpers/MenuWidth';
+import clsx from 'clsx';
 
 interface props {
   menuOpen: boolean;
@@ -14,31 +15,37 @@ interface props {
 
 const NavBar = ({ menuOpen, setMenuOpen }: props) => {
   const menuItems = [
-    { title: 'Home', icon: <HiOutlineHome size={20} /> },
-    { title: 'Subscriptions', icon: <PiUserList size={20} /> },
-    { title: 'Liked Videos', icon: <AiOutlineLike size={20} /> },
-    { title: 'Creators', icon: <PiUsers size={20} /> },
-    { title: 'Help', icon: <TbHelp size={20} /> },
+    { title: 'Home', icon: <HiOutlineHome size={23} /> },
+    { title: 'Subscriptions', icon: <PiUserList size={23} /> },
+    { title: 'Liked Videos', icon: <AiOutlineLike size={23} /> },
+    { title: 'Creators', icon: <PiUsers size={23} /> },
+    { title: 'Help', icon: <TbHelp size={23} /> },
   ];
   return (
     <>
       <div
-        className={`fixed h-screen p-5 duration-200 ${
-          menuOpen ? 'w-' + MenuWidth.menuOpen : 'w-' + MenuWidth.menuClosed
-        }`}>
+        className={clsx(
+          'fixed h-screen pl-1 pt-3 duration-200 xsm:p-5 ',
+          menuOpen && 'w-' + MenuWidth.menuOpen,
+          !menuOpen && 'w-' + MenuWidth.menuClosed
+        )}>
         <RxHamburgerMenu
           className="cursor-pointer text-gray"
-          size={24}
+          size={27}
           onClick={() => setMenuOpen(!menuOpen)}
         />
         <ul>
           {menuItems.map((item, index) => (
-            <li key={index} className="mt-8 flex h-8 items-center text-gray">
-              <span className="mr-4 text-2xl">{item.icon}</span>
+            <li
+              key={index}
+              className="mt-6 flex h-8 items-center text-gray xsm:mt-8">
+              <span className="mr-2 text-2xl xsm:mr-4">{item.icon}</span>
               <span
-                className={`whitespace-nowrap font-sans text-base ${
-                  !menuOpen ? 'invisible' : ''
-                }`}>
+                className={clsx(
+                  'whitespace-nowrap font-sans text-sm ',
+                  !menuOpen && 'invisible',
+                  menuOpen && ''
+                )}>
                 {item.title}
               </span>
             </li>

@@ -1,4 +1,6 @@
-export enum MenuWidth {
-  menuOpen = '44',
-  menuClosed = '16',
+export const MenuWidth = {
+  menuOpen: '36',
+  menuClosed: '12',
+  xsmMenuOpen: '44',
+  xsmMenuClosed: '16',
 }
