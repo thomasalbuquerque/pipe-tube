@@ -8,6 +8,21 @@ interface props {
   uploadDate: string;
   videoUrl: string;
 }
+function trimVideoTitle(videoTitle: string) {
+  let counter = 0;
+  for (let i = 0; i < videoTitle.length; i++) {
+    if (videoTitle[i] === videoTitle[i].toUpperCase()) {
+      counter++;
+    }
+  }
+  if (counter > videoTitle.length / 2) {
+    return videoTitle.slice(0, 37) + '...';
+  } else if (videoTitle.length > 45) {
+    return videoTitle.slice(0, 45) + '...';
+  } else {
+    return videoTitle;
+  }
+}
 const VideoCard = ({
   thumbnailUrl,
   channelProfilePicUrl,
@@ -24,7 +39,7 @@ const VideoCard = ({
           <img className="absolute" src={thumbnailUrl} />
         </div>
 
-        <h3 className="pl-2 pt-1 text-base">{videoTitle}</h3>
+        <h3 className="pl-2 pt-1 text-base">{trimVideoTitle(videoTitle)}</h3>
         <span className="pl-2 text-xs">{channelName}</span>
         <div className="flex justify-between">
           <span className="pl-2 text-xs">
