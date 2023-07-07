@@ -1,4 +1,4 @@
-import React, { use } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import { MenuWidth } from '@/utils/MenuWidth';
 import clsx from 'clsx';
 import VideoCard from '../VideoCard';
@@ -8,8 +8,33 @@ interface props {
   menuOpen: boolean;
 }
 
+interface Video {
+  videoId: string;
+  thumbnailUrl: string;
+  channelProfilePicUrl: string;
+  videoTitle: string;
+  channelName: string;
+  viewCount: string;
+  uploadDate: string;
+  videoUrl: string;
+}
+
+function shuffleArray(videos: Video[]) {
+  const randomElements = videos.sort(() => 0.5 - Math.random()).slice(0, 30);
+  return randomElements;
+}
+
+let counter = 0;
+if (counter === 0) {
+  // getYoutubeData();
+  counter++;
+}
+
 const HomeContent = ({ menuOpen }: props) => {
-  const videos = JSON.parse(JSON.stringify(videos_data));
+  const [videos, setVideos] = useState<Video[]>([]);
+  useEffect(() => {
+    setVideos(shuffleArray(JSON.parse(JSON.stringify(videos_data))));
+  }, []);
   return (
     <>
       <div
@@ -18,8 +43,9 @@ const HomeContent = ({ menuOpen }: props) => {
           menuOpen && `left-32 xsm:left-44`,
           !menuOpen && `left-12 xsm:left-16`
         )}>
-        {videos.map((video: any) => (
+        {videos.map((video: Video) => (
           <VideoCard
+            key={video.videoId}
             thumbnailUrl={video.thumbnailUrl}
             channelProfilePicUrl={video.channelProfilePicUrl}
             videoTitle={video.videoTitle}

@@ -1,18 +1,29 @@
+
+// import dotenv from "dotenv"
+// dotenv.config()
 const axios = require('axios');
 import { AxiosResponse } from 'axios';
 
 //This file is not being used, but it is a good example of how to get data from the Youtube API. I used it once to get a sample of 40 videos to use in the app.
 
 // YouTube API key
-const apiKey = 'AIzaSyCEe-dSAUWlLa8xFI1USLiONW-OseBt1Ws';
+const apiKey = 'AIzaSyCEe-dSAUWlLa8xFI1USLiONW-OseBt1Ws'; /////BUGGGG
 
-const numberOfVideos = 40;
+const numberOfVideos = 50;
 
-const keyword = 'educação';
+const keyword = 'education';
 
-const regionCode = 'BR';
+const regionCode = 'UK';
 
 const videoCategoryId = '27';
+
+const removeDuplicatedIds = (videoIds: string[]) => {
+  const uniqueVideoIds = videoIds.filter((v, index) => {
+    return videoIds.indexOf(v) === index;
+  });
+  return uniqueVideoIds;
+}
+
 
 export async function getYoutubeData() {
 
@@ -30,6 +41,9 @@ export async function getYoutubeData() {
 
   console.log('videoIds')
   console.log(videoIds)
+  const uniqueVideoIds = removeDuplicatedIds(videoIds);
+  console.log('uniqueVideoIds')
+  console.log(uniqueVideoIds)
 
   let videosObjects: { thumbnailUrl: any; channelProfilePicUrl: any; videoTitle: any; channelName: any; viewCount: any; uploadDate: any; videoUrl: string; }[] = [];
   let counter = 0
@@ -51,6 +65,7 @@ export async function getYoutubeData() {
     const uploadDate = snippet.publishedAt;
     const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
     const videoObject = {
+      videoId,
       thumbnailUrl,
       channelProfilePicUrl,
       videoTitle,
