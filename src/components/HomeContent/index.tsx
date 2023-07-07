@@ -4,24 +4,9 @@ import clsx from 'clsx';
 import VideoCard from '../VideoCard';
 import { getYoutubeData } from '@/helpers/youtubeData/getVideosIds';
 import videos_data from '@/utils/videos_data.json';
+import { shuffleArray } from '@/helpers/functions';
 interface props {
   menuOpen: boolean;
-}
-
-interface Video {
-  videoId: string;
-  thumbnailUrl: string;
-  channelProfilePicUrl: string;
-  videoTitle: string;
-  channelName: string;
-  viewCount: string;
-  uploadDate: string;
-  videoUrl: string;
-}
-
-function shuffleArray(videos: Video[]) {
-  const randomElements = videos.sort(() => 0.5 - Math.random()).slice(0, 30);
-  return randomElements;
 }
 
 let counter = 0;
@@ -44,16 +29,7 @@ const HomeContent = ({ menuOpen }: props) => {
           !menuOpen && `left-12 xsm:left-16`
         )}>
         {videos.map((video: Video) => (
-          <VideoCard
-            key={video.videoId}
-            thumbnailUrl={video.thumbnailUrl}
-            channelProfilePicUrl={video.channelProfilePicUrl}
-            videoTitle={video.videoTitle}
-            channelName={video.channelName}
-            viewCount={video.viewCount}
-            uploadDate={video.uploadDate}
-            videoUrl={video.videoUrl}
-          />
+          <VideoCard key={video.videoId} video={video} />
         ))}
       </div>
     </>

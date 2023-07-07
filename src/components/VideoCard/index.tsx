@@ -1,26 +1,20 @@
 import React from 'react';
 interface props {
-  thumbnailUrl: string;
-  channelProfilePicUrl: string;
-  videoTitle: string;
-  channelName: string;
-  viewCount: string;
-  uploadDate: string;
-  videoUrl: string;
+  video: Video;
 }
-function trimVideoTitle(videoTitle: string) {
+function trimVideoTitle(title: string) {
   let counter = 0;
-  for (let i = 0; i < videoTitle.length; i++) {
-    if (videoTitle[i] === videoTitle[i].toUpperCase()) {
+  for (let i = 0; i < title.length; i++) {
+    if (title[i] === title[i].toUpperCase()) {
       counter++;
     }
   }
-  if (counter > videoTitle.length / 2) {
-    return videoTitle.slice(0, 37) + '...';
-  } else if (videoTitle.length > 45) {
-    return videoTitle.slice(0, 42) + '...';
+  if (counter > title.length / 2) {
+    return title.slice(0, 37) + '...';
+  } else if (title.length > 45) {
+    return title.slice(0, 42) + '...';
   } else {
-    return videoTitle;
+    return title;
   }
 }
 function formatDate(date: string) {
@@ -33,35 +27,29 @@ function formatDate(date: string) {
   const finalDate = dateInDateFormat.toLocaleDateString('pt-BR', options);
   return finalDate;
 }
-const VideoCard = ({
-  thumbnailUrl,
-  channelProfilePicUrl,
-  videoTitle,
-  channelName,
-  viewCount,
-  uploadDate,
-  videoUrl,
-}: props) => {
+const VideoCard = ({ video }: props) => {
   return (
     <>
       <div className="flex h-auto w-96 flex-col text-gray">
         <div className="relative flex h-[13.5rem] w-96 items-center justify-center overflow-hidden rounded-lg">
           <img
-            alt={`Video image thumbnail from video title: ${videoTitle}`}
+            alt={`Video image thumbnail from video title: ${video.videoTitle}`}
             width={384}
             height={216}
             className="absolute"
-            src={thumbnailUrl}
+            src={video.thumbnailUrl}
           />
         </div>
 
-        <h3 className="pl-2 pt-1 text-base">{trimVideoTitle(videoTitle)}</h3>
-        <span className="pl-2 text-xs">{channelName}</span>
+        <h3 className="pl-2 pt-1 text-base">
+          {trimVideoTitle(video.videoTitle)}
+        </h3>
+        <span className="pl-2 text-xs">{video.channelName}</span>
         <div className="flex justify-between">
           <span className="pl-2 text-xs">
-            Views: {Number(viewCount).toLocaleString('pt-BR')}
+            Views: {Number(video.viewCount).toLocaleString('pt-BR')}
           </span>
-          <span className="text-xs">{formatDate(uploadDate)}</span>
+          <span className="text-xs">{formatDate(video.uploadDate)}</span>
         </div>
       </div>
     </>
