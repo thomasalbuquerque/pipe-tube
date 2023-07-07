@@ -7,7 +7,7 @@ import { AxiosResponse } from 'axios';
 //This file is not being used, but it is a good example of how to get data from the Youtube API. I used it once to get a sample of 40 videos to use in the app.
 
 // YouTube API key
-const apiKey = 'AIzaSyCEe-dSAUWlLa8xFI1USLiONW-OseBt1Ws'; /////BUGGGG
+const apiKey = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY;
 
 const numberOfVideos = 50;
 
