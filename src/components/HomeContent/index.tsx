@@ -18,7 +18,7 @@ if (counter === 0) {
 const HomeContent = ({ menuOpen }: props) => {
   const [videos, setVideos] = useState<Video[]>([]);
   useEffect(() => {
-    setVideos(shuffleArray(JSON.parse(JSON.stringify(videos_data))));
+    setVideos(shuffleArray(JSON.parse(JSON.stringify(videos_data)), 30));
   }, []);
   return (
     <>
