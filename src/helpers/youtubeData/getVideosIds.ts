@@ -1,20 +1,12 @@
-
-// import dotenv from "dotenv"
-// dotenv.config()
 const axios = require('axios');
 import { AxiosResponse } from 'axios';
 
 //This file is not being used, but it is a good example of how to get data from the Youtube API. I used it once to get a sample of 40 videos to use in the app.
 
-// YouTube API key
 const apiKey = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY;
-
-const numberOfVideos = 50;
-
+const numberOfVideos = 4;
 const keyword = 'education';
-
 const regionCode = 'UK';
-
 const videoCategoryId = '27';
 
 const removeDuplicatedIds = (videoIds: string[]) => {
@@ -24,61 +16,51 @@ const removeDuplicatedIds = (videoIds: string[]) => {
   return uniqueVideoIds;
 }
 
-
 export async function getYoutubeData() {
 
-  const res: AxiosResponse = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=id&type=video&maxResults=${numberOfVideos}&q=${keyword}&regionCode=${regionCode}&videoCategoryId=${videoCategoryId}&key=${apiKey}`)
-  console.log('res.data')
-  console.log(res.data)
-  const videoItems = res.data.items;
-  console.log('videoItems')
-  console.log(videoItems)
-  const videoIds = videoItems.map((video: {
+  const resSearch: AxiosResponse = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=id&type=video&maxResults=${numberOfVideos}&q=${keyword}&regionCode=${regionCode}&videoCategoryId=${videoCategoryId}&key=${apiKey}`)
+
+  const videoItems = resSearch.data.items;
+  const videoIds: string[] = videoItems.map((video: {
     id: {
-      videoId: any;
+      videoId: string;
     };
   }) => video.id.videoId);
 
-  console.log('videoIds')
-  console.log(videoIds)
   const uniqueVideoIds = removeDuplicatedIds(videoIds);
-  console.log('uniqueVideoIds')
-  console.log(uniqueVideoIds)
 
-  let videosObjects: { thumbnailUrl: any; channelProfilePicUrl: any; videoTitle: any; channelName: any; viewCount: any; uploadDate: any; videoUrl: string; }[] = [];
+  let videosObjects: Video[] = [];
   let counter = 0
 
-  videoIds.forEach(async (videoId: any) => {
-    const res2 = await axios.get(`https://www.googleapis.com/youtube/v3/videos?part=snippet%2Cstatistics&id=${videoId}&key=${apiKey}`)
-    const video = res2.data.items[0]
-    console.log('video')
-    console.log(video)
-    const snippet = video.snippet;
-    console.log('snippet')
-    console.log(snippet)
-    const statistics = video.statistics;
-    const viewCount = statistics.viewCount;
-    const thumbnailUrl = snippet.thumbnails.high.url;
-    const channelProfilePicUrl = snippet.channelTitle;
-    const videoTitle = snippet.title;
-    const channelName = snippet.channelTitle;
-    const uploadDate = snippet.publishedAt;
+  uniqueVideoIds.forEach(async (videoId: string) => {
+    const response = await axios.get(`https://www.googleapis.com/youtube/v3/videos?part=snippet%2Cstatistics&id=${videoId}&key=${apiKey}`)
+    const video = response.data.items[0]
+
+    const thumbnailUrl = video.snippet.thumbnails.high.url;
+    const channelId = video.snippet.channelId;
+    const videoTitle = video.snippet.title;
+    const description = video.snippet.description;
+    const channelName = video.snippet.channelTitle;
+    const uploadDate = video.snippet.publishedAt;
+    const viewCount = video.statistics.viewCount;
     const videoUrl = `https://www.youtube.com/watch?v=${videoId}`;
-    const videoObject = {
+
+    const newObject: Video = {
       videoId,
       thumbnailUrl,
-      channelProfilePicUrl,
+      channelId,
       videoTitle,
+      description,
       channelName,
       viewCount,
       uploadDate,
       videoUrl
     };
-    console.log(`videoObject ${counter++}`);
-    console.log(videoObject);
-    videosObjects.push(videoObject);
-    console.log('videosObjects')
-    console.log(videosObjects)
+
+    videosObjects.push(newObject);
+
+    const json = JSON.stringify(videosObjects, null, 2);
+
     return videosObjects;
   })
 }
