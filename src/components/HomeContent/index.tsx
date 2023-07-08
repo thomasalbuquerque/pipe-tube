@@ -1,7 +1,7 @@
 import React, { use, useEffect, useState } from 'react';
 import { MenuWidth } from '@/utils/MenuWidth';
 import clsx from 'clsx';
-import VideoCard from '../VideoCard';
+import CardVideo from '../CardVideo';
 import { getYoutubeData } from '@/helpers/youtubeData/getVideosIds';
 import videos_data from '@/utils/videos_data.json';
 import { shuffleArray } from '@/helpers/functions';
@@ -29,7 +29,7 @@ const HomeContent = ({ menuOpen }: props) => {
           !menuOpen && `left-12 xsm:left-16`
         )}>
         {videos.map((video: Video) => (
-          <VideoCard key={video.videoId} video={video} />
+          <CardVideo key={video.videoId} video={video} />
         ))}
       </div>
     </>

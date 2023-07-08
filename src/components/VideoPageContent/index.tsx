@@ -3,16 +3,19 @@ import React, { useEffect, useState } from 'react';
 import VideoPlayer from '../VideoPlayer';
 import videos_data from '@/utils/videos_data.json';
 import { shuffleArray } from '@/helpers/functions';
-import VideoCard from '../VideoCard';
-
+import CardVideo from '../CardVideo';
 interface props {
   menuOpen: boolean;
+  videoId: string;
 }
-const VideoPageContent = ({ menuOpen }: props) => {
-  const [videos, setVideos] = useState<Video[]>([]);
+const VideoPageContent = ({ menuOpen, videoId }: props) => {
+  const [videos, setVideos] = useState<Video[]>(
+    shuffleArray(JSON.parse(JSON.stringify(videos_data)), 12)
+  );
+  const [currentVideo, setcurrentVideo] = useState<Video>();
   useEffect(() => {
-    setVideos(shuffleArray(JSON.parse(JSON.stringify(videos_data)), 12));
-  }, []);
+    setcurrentVideo(videos.find((video: Video) => video.videoId === videoId));
+  }, [videos]);
   return (
     <>
       <div
@@ -21,10 +24,14 @@ const VideoPageContent = ({ menuOpen }: props) => {
           menuOpen && `left-32 xsm:left-40`,
           !menuOpen && `left-12 xsm:left-16`
         )}>
-        <VideoPlayer />
+        <div className="flex flex-col ">
+          <VideoPlayer videoId={videoId} />
+          <div>{currentVideo ? currentVideo!.videoTitle : ''}</div>
+        </div>
+
         <div className="flex h-[50rem] w-96 flex-col items-center gap-5">
           {videos.map((video: Video) => (
-            <VideoCard key={video.videoId} video={video} />
+            <CardVideo key={video.videoId} video={video} />
           ))}
         </div>
       </div>

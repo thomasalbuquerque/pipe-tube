@@ -1,12 +1,14 @@
-import clsx from 'clsx';
 import React from 'react';
 import YouTube from 'react-youtube';
 
-const VideoPlayer = () => {
+interface props {
+  videoId: string;
+}
+const VideoPlayer = ({ videoId }: props) => {
   return (
     <div className="">
       <YouTube
-        videoId="v3kIGlkWZrY"
+        videoId={videoId}
         opts={{
           height: '720',
           width: '1280',

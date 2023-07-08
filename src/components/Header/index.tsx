@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 const Header = () => {
   return (
@@ -6,11 +7,13 @@ const Header = () => {
         //"great learning in this section, when I don't define the height, when the screen is horizontally reduced, the bottom component with a fixed margin top becomes very spaced out"
         className={`fixed z-50 flex h-20 w-full items-center justify-between overflow-hidden bg-white py-1 shadow-md`}>
         <div className="m-2 flex flex-col-reverse gap-2 xsm:flex-row xsm:items-center sm:m-4 sm:flex-nowrap sm:gap-4">
-          <img
-            className="w-16 px-1 xsm:px-2 sm:w-24"
-            src="/pipetube-logo.png"
-            alt="website logo pipe tube"
-            id="logo"></img>
+          <Link href={`/`}>
+            <img
+              className="w-16 px-1 xsm:px-2 sm:w-24"
+              src="/pipetube-logo.png"
+              alt="website logo pipe tube"
+              id="logo"></img>
+          </Link>
         </div>
         <div
           id="searchBar"
