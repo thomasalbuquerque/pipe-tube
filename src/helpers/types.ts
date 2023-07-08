@@ -1,8 +1,9 @@
 interface Video {
   videoId: string;
   thumbnailUrl: string;
-  channelProfilePicUrl: string;
+  channelId: string;
   videoTitle: string;
+  description: string;
   channelName: string;
   viewCount: string;
   uploadDate: string;
