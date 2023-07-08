@@ -1,5 +1,5 @@
 import React from 'react';
-import YouTube from 'react-youtube';
+import YouTube, { YouTubeProps } from 'react-youtube';
 
 interface props {
   videoId: string;
@@ -15,7 +15,7 @@ const VideoPlayer = ({ videoId }: props) => {
           playerVars: { autoplay: 0, controls: 1, showinfo: 0 },
           className: 'w-full h-full',
         }}
-        className="h-full w-full"
+        className="w-fit"
       />
     </div>
   );

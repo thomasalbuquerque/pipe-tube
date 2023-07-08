@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import React, { useEffect, useState } from 'react';
 import VideoPlayer from '../VideoPlayer';
 import videos_data from '@/utils/videos_data.json';
-import { shuffleArray } from '@/helpers/functions';
+import { formatDate, formatViewCount, shuffleArray } from '@/helpers/functions';
 import CardVideo from '../CardVideo';
 interface props {
   menuOpen: boolean;
@@ -24,9 +24,29 @@ const VideoPageContent = ({ menuOpen, videoId }: props) => {
           menuOpen && `left-32 xsm:left-40`,
           !menuOpen && `left-12 xsm:left-16`
         )}>
-        <div className="flex flex-col ">
+        <div className="flex w-[80rem] flex-col items-start">
           <VideoPlayer videoId={videoId} />
-          <div>{currentVideo ? currentVideo!.videoTitle : ''}</div>
+          <div>{currentVideo ? currentVideo.videoTitle : ''}</div>
+          <div className="flex">
+            <div>
+              Youtube views:{' '}
+              {currentVideo ? formatViewCount(currentVideo.viewCount) : ''} |{' '}
+              {currentVideo ? formatDate(currentVideo.uploadDate) : ''}
+            </div>
+          </div>
+          <button>Like</button>
+          <div>{currentVideo ? currentVideo.channelName : ''}</div>
+          <div className="">Description</div>
+          <div>
+            {currentVideo
+              ? currentVideo.description.split('\n').map((line, index) => (
+                  <React.Fragment key={index}>
+                    {line}
+                    <br />
+                  </React.Fragment>
+                ))
+              : ''}
+          </div>
         </div>
 
         <div className="flex h-[50rem] w-96 flex-col items-center gap-5">
