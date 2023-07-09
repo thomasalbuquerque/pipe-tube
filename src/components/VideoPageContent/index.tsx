@@ -20,20 +20,17 @@ const VideoPageContent = ({ menuOpen, videoId }: props) => {
   }, []);
 
   useEffect(() => {
-    if (!allVideos) {
-      return;
-    } else {
-      setcurrentVideo(
-        allVideos.find((video: Video) => video.videoId == videoId)
-      );
-    }
+    if (!allVideos) return;
+    setcurrentVideo(
+      allVideos.find((video: Video) => video.videoId === videoId)
+    );
   }, [allVideos]);
 
   useEffect(() => {
     if (!currentVideo) return;
-
     setRecommendedVideos(allVideos.slice(0, 12));
   }, [currentVideo]);
+
   if (!currentVideo) {
     return <div>Loading...</div>;
   }
