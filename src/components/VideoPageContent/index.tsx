@@ -5,6 +5,7 @@ import videos_data from '@/utils/videos_data.json';
 import { formatDate, formatViewCount, shuffleArray } from '@/helpers/functions';
 import CardVideo from '../CardVideo';
 import { AiOutlineLike } from 'react-icons/ai';
+import Spinner from '../Spinner';
 
 interface props {
   menuOpen: boolean;
@@ -32,7 +33,7 @@ const VideoPageContent = ({ menuOpen, videoId }: props) => {
   }, [currentVideo]);
 
   if (!currentVideo) {
-    return <div>Loading...</div>;
+    return <Spinner />;
   }
   return (
     <>
