@@ -32,9 +32,6 @@ const VideoPageContent = ({ menuOpen, videoId }: props) => {
     setRecommendedVideos(allVideos.slice(0, 12));
   }, [currentVideo]);
 
-  if (!currentVideo) {
-    return <Spinner />;
-  }
   return (
     <>
       <div
@@ -46,43 +43,50 @@ const VideoPageContent = ({ menuOpen, videoId }: props) => {
         <div>
           <div className="flex w-[80rem] flex-col items-start">
             <VideoPlayer videoId={videoId} />
-            <h1 className="mt-4 text-xl">{currentVideo.videoTitle}</h1>
-            <div className="mt-3 flex items-center gap-5">
-              <div className="flex items-center gap-2">
-                <img src="/channel-profile-pic.png" alt="" />
-                <div className="font-medium">{currentVideo.channelName}</div>
-              </div>
-              <button className="h-8 w-24 rounded-md border border-customGray bg-accent font-medium text-background">
-                Subscribe
-              </button>
-              <button className="flex h-8 w-24 items-center justify-center gap-1 rounded-md border border-customGray bg-accent font-medium text-background">
-                <span>Like</span>
-                <span>
-                  <AiOutlineLike />{' '}
-                </span>
-              </button>
-            </div>
+            {currentVideo ? (
+              <div>
+                <h1 className="mt-4 text-xl">{currentVideo.videoTitle}</h1>
+                <div className="mt-3 flex items-center gap-5">
+                  <div className="flex items-center gap-2">
+                    <img src="/channel-profile-pic.png" alt="" />
+                    <div className="font-medium">
+                      {currentVideo.channelName}
+                    </div>
+                  </div>
+                  <button className="h-8 w-24 rounded-md border border-customGray bg-accent font-medium text-background">
+                    Subscribe
+                  </button>
+                  <button className="flex h-8 w-24 items-center justify-center gap-1 rounded-md border border-customGray bg-accent font-medium text-background">
+                    <span>Like</span>
+                    <span>
+                      <AiOutlineLike />{' '}
+                    </span>
+                  </button>
+                </div>
 
-            <div className="mt-3 h-fit w-[80rem] rounded-md bg-lightOrange">
-              <div className="m-3 mb-4 flex items-center justify-between">
-                <div className="text-sm font-medium">Description</div>
-                <div className="text-sm font-medium">
-                  {formatDate(currentVideo.uploadDate)} |{' '}
-                  {formatViewCount(currentVideo.viewCount)}
-                  {'  '}
-                  views
+                <div className="mt-5 h-fit w-[80rem] rounded-md bg-lightOrange">
+                  <div className="m-3 mb-4 flex items-center justify-between">
+                    <div className="text-sm font-medium">Description</div>
+                    <div className="text-sm font-medium">
+                      {formatDate(currentVideo.uploadDate)} |{' '}
+                      {formatViewCount(currentVideo.viewCount)}
+                      {'  '}
+                      views
+                    </div>
+                  </div>
+                  <div className="m-3 text-sm font-normal">
+                    {currentVideo.description.split('\n').map((line, index) => (
+                      <React.Fragment key={index}>
+                        {line}
+                        <br />
+                      </React.Fragment>
+                    ))}
+                  </div>
                 </div>
               </div>
-              <div className="m-3 text-sm font-normal">
-                {currentVideo.description.split('\n').map((line, index) => (
-                  <React.Fragment key={index}>
-                    {line}
-                    <br />
-                  </React.Fragment>
-                ))}
-              </div>
-            </div>
-
+            ) : (
+              <Spinner />
+            )}
             {/*  */}
           </div>
         </div>
