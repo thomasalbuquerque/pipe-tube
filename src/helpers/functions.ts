@@ -39,7 +39,7 @@ export function formatDate(date: string) {
     month: 'long' as const,
     year: 'numeric' as const,
   };
-  const finalDate = dateInDateFormat.toLocaleDateString('pt-BR', options);
+  const finalDate = dateInDateFormat.toLocaleDateString('en-US', options);
   return finalDate;
 }
 

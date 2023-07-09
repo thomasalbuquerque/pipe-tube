@@ -8,7 +8,7 @@ const CardVideo = ({ video }: props) => {
   return (
     <>
       <Link href={`/video/${video.videoId}`}>
-        <div className="flex h-auto w-96 flex-col text-gray">
+        <div className="flex h-auto w-96 flex-col text-customGray">
           <div className="relative flex h-[13.5rem] w-96 items-center justify-center overflow-hidden rounded-lg">
             <img
               alt={`Video image thumbnail from video title: ${video.videoTitle}`}

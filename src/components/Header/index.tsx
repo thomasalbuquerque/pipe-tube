@@ -20,7 +20,7 @@ const Header = () => {
           className="flex h-7 w-2/4 items-center rounded-lg border border-solid border-lightGray bg-white px-4 py-1 xsm:h-9 md:justify-between md:rounded-xl xl:w-1/4">
           <form action="/send-data-here" method="post" className="w-full">
             <input
-              className="text-grayray h-full w-full focus:outline-none"
+              className="h-full w-full text-customGray focus:outline-none"
               type="text"
               placeholder="Search"
             />
