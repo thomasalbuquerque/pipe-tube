@@ -1,22 +1,19 @@
 import React from 'react';
-import YouTube, { YouTubeProps } from 'react-youtube';
+import styles from './styles.module.css';
 
-interface props {
+interface Props {
   videoId: string;
 }
-const VideoPlayer = ({ videoId }: props) => {
+
+const VideoPlayer = ({ videoId }: Props) => {
   return (
-    <div className="">
-      <YouTube
-        videoId={videoId}
-        opts={{
-          height: '720',
-          width: '1280',
-          playerVars: { autoplay: 0, controls: 1, showinfo: 0 },
-          className: 'w-full h-full',
-        }}
-        className="w-fit"
-      />
+    <div className="relative w-full pb-[56.25%]">
+      <iframe
+        title="YouTube video player"
+        className={styles.ytIframe}
+        src={`https://www.youtube.com/embed/${videoId}?autoplay=0&controls=1&showinfo=0`}
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowFullScreen></iframe>
     </div>
   );
 };

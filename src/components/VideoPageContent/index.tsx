@@ -36,61 +36,57 @@ const VideoPageContent = ({ menuOpen, videoId }: props) => {
     <>
       <div
         className={clsx(
-          'absolute flex flex-wrap items-start gap-10 pr-4 duration-200 xsm:p-5',
+          'absolute flex flex-wrap items-start justify-between gap-4 pr-4 duration-200 xsm:p-5 ',
           menuOpen && `left-32 xsm:left-40`,
           !menuOpen && `left-12 xsm:left-16`
         )}>
-        <div>
-          <div className="flex w-[80rem] flex-col items-start">
-            <VideoPlayer videoId={videoId} />
-            {currentVideo ? (
-              <div>
-                <h1 className="mt-4 text-xl">{currentVideo.videoTitle}</h1>
-                <div className="mt-3 flex items-center gap-5">
-                  <div className="flex items-center gap-2">
-                    <img src="/channel-profile-pic.png" alt="" />
-                    <div className="font-medium">
-                      {currentVideo.channelName}
-                    </div>
-                  </div>
-                  <button className="h-8 w-24 rounded-md border border-customGray bg-accent font-medium text-background">
-                    Subscribe
-                  </button>
-                  <button className="flex h-8 w-24 items-center justify-center gap-1 rounded-md border border-customGray bg-accent font-medium text-background">
-                    <span>Like</span>
-                    <span>
-                      <AiOutlineLike />{' '}
-                    </span>
-                  </button>
+        <div className="flex  w-full flex-col  items-start xl:w-2/3 2xl:w-3/4">
+          <VideoPlayer videoId={videoId} />
+          {currentVideo ? (
+            <div>
+              <h1 className="mt-4 text-xl">{currentVideo.videoTitle}</h1>
+              <div className="mt-3 flex items-center gap-5">
+                <div className="flex items-center gap-2">
+                  <img src="/channel-profile-pic.png" alt="" />
+                  <div className="font-medium">{currentVideo.channelName}</div>
                 </div>
+                <button className="h-8 w-24 rounded-md border border-customGray bg-accent font-medium text-background">
+                  Subscribe
+                </button>
+                <button className="flex h-8 w-24 items-center justify-center gap-1 rounded-md border border-customGray bg-accent font-medium text-background">
+                  <span>Like</span>
+                  <span>
+                    <AiOutlineLike />{' '}
+                  </span>
+                </button>
+              </div>
 
-                <div className="mt-5 h-fit w-[80rem] rounded-md bg-lightOrange">
-                  <div className="m-3 mb-4 flex items-center justify-between">
-                    <div className="text-sm font-medium">Description</div>
-                    <div className="text-sm font-medium">
-                      {formatDate(currentVideo.uploadDate)} |{' '}
-                      {formatViewCount(currentVideo.viewCount)}
-                      {'  '}
-                      views
-                    </div>
+              <div className="mt-5 h-fit rounded-md bg-lightOrange">
+                <div className="m-3 mb-4 flex items-center justify-between">
+                  <div className="text-sm font-medium">Description</div>
+                  <div className="text-sm font-medium">
+                    {formatDate(currentVideo.uploadDate)} |{' '}
+                    {formatViewCount(currentVideo.viewCount)}
+                    {'  '}
+                    views
                   </div>
-                  <div className="m-3 text-sm font-normal">
-                    {currentVideo.description.split('\n').map((line, index) => (
-                      <React.Fragment key={index}>
-                        {line}
-                        <br />
-                      </React.Fragment>
-                    ))}
-                  </div>
+                </div>
+                <div className="m-3 text-sm font-normal">
+                  {currentVideo.description.split('\n').map((line, index) => (
+                    <React.Fragment key={index}>
+                      {line}
+                      <br />
+                    </React.Fragment>
+                  ))}
                 </div>
               </div>
-            ) : (
-              <Spinner />
-            )}
-            {/*  */}
-          </div>
+            </div>
+          ) : (
+            <Spinner />
+          )}
+          {/*  */}
         </div>
-        <div className="flex h-[50rem] w-96 flex-col items-center gap-5">
+        <div className="mr-4 flex h-[50rem] w-96 flex-col items-center gap-5">
           {recommendedVideos.map((video: Video) => (
             <CardVideo key={video.videoId} video={video} />
           ))}
