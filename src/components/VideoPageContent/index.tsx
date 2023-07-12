@@ -36,9 +36,7 @@ const VideoPageContent = ({ menuOpen, videoId }: props) => {
     <>
       <div
         className={clsx(
-          'absolute flex flex-wrap items-start justify-between gap-4 pr-4 duration-200 xsm:p-5 ',
-          menuOpen && `left-32 xsm:left-40`,
-          !menuOpen && `left-12 xsm:left-16`
+          'absolute left-12 z-0 flex flex-wrap items-start justify-between gap-4 pr-4 duration-200 xsm:left-16 xsm:p-5'
         )}>
         <div className="flex  w-full flex-col  items-start xl:w-2/3 2xl:w-3/4">
           <VideoPlayer videoId={videoId} />
@@ -50,10 +48,10 @@ const VideoPageContent = ({ menuOpen, videoId }: props) => {
                   <img src="/channel-profile-pic.png" alt="" />
                   <div className="font-medium">{currentVideo.channelName}</div>
                 </div>
-                <button className="h-8 w-24 rounded-md border border-customGray bg-accent font-medium text-background">
+                <button className="h-8 w-24 rounded-md border border-customGray bg-accent font-medium text-lightOrangeBG">
                   Subscribe
                 </button>
-                <button className="flex h-8 w-24 items-center justify-center gap-1 rounded-md border border-customGray bg-accent font-medium text-background">
+                <button className="flex h-8 w-24 items-center justify-center gap-1 rounded-md border border-customGray bg-accent font-medium text-lightOrangeBG">
                   <span>Like</span>
                   <span>
                     <AiOutlineLike />{' '}

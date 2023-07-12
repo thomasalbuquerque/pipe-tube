@@ -12,7 +12,7 @@ module.exports = {
         lightGray: '#cccccc',
         lightOrange: '#fff1e7',
         accent: '#eb6900',
-        background: '#fff7f1',
+        lightOrangeBG: '#fff7f1',
       }
       , backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

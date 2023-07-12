@@ -5,7 +5,6 @@ import { PiUsers } from 'react-icons/pi';
 import { PiUserList } from 'react-icons/pi';
 import { TbHelp } from 'react-icons/tb';
 import { AiOutlineLike } from 'react-icons/ai';
-import { MenuWidth } from '@/utils/MenuWidth';
 import clsx from 'clsx';
 
 interface props {
@@ -25,11 +24,9 @@ const NavBar = ({ menuOpen, setMenuOpen }: props) => {
     <>
       <div
         className={clsx(
-          'fixed h-screen pl-3 pt-3 duration-200 xsm:p-5 ',
-          menuOpen &&
-            'w-' + MenuWidth.menuOpen + ' xsm:w-' + MenuWidth.xsmMenuOpen,
-          !menuOpen &&
-            'w-' + MenuWidth.menuClosed + ' xsm:w-' + MenuWidth.xsmMenuClosed
+          'fixed z-10 h-screen bg-lightOrangeBG pl-3 pt-3 duration-200 xsm:p-5',
+          menuOpen && 'w-36 border-r border-customGray xsm:w-44',
+          !menuOpen && 'w-12 xsm:w-16'
         )}>
         <RxHamburgerMenu
           className="cursor-pointer text-lg text-accent xsm:text-2xl"

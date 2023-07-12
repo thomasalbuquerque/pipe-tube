@@ -8,7 +8,7 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = React.useState(false);
   return (
     <>
-      <main className="bg-background">
+      <main className="bg-lightOrangeBG">
         <div className="h-20">
           <Header />
         </div>
