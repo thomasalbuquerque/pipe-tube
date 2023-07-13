@@ -1,10 +1,10 @@
 import clsx from 'clsx';
 import React, { useEffect, useState } from 'react';
-import CardVideo from '../CardVideo';
 import { getYoutubeVideos } from '@/helpers/youtubeData/getYoutubeVideos';
 import { useSearchParams } from 'next/navigation';
 import Spinner from '../Spinner';
 import { getYoutubeVideos_Simulated } from '@/helpers/youtubeData/getYoutubeVideos_Simulated';
+import CardVideoSearch from '../CardVideoSearch';
 
 interface props {
   menuOpen: boolean;
@@ -27,21 +27,21 @@ const SearchContent = ({ menuOpen }: props) => {
 
   return (
     <>
-      <div
-        className={clsx(
-          'absolute flex flex-wrap items-center justify-center gap-5 pr-4 pt-3 duration-200 xsm:p-5',
-          menuOpen && `left-32 xsm:left-44`,
-          !menuOpen && `left-12 xsm:left-16`
-        )}>
-        {videos ? (
-          videos.map((video: Video) => (
-            <CardVideo key={video.videoId} video={video} />
-          ))
-        ) : (
-          <div>
-            <Spinner />
-          </div>
-        )}
+      <div className="flex items-center justify-center">
+        <div
+          className={clsx(
+            'ml-10 flex w-3/4 flex-col gap-5 pr-4 pt-3 duration-200 xsm:p-5 lg:ml-48'
+          )}>
+          {videos ? (
+            videos.map((video: Video) => (
+              <CardVideoSearch key={video.videoId} video={video} />
+            ))
+          ) : (
+            <div>
+              <Spinner />
+            </div>
+          )}
+        </div>
       </div>
     </>
   );

@@ -16,7 +16,7 @@ const Page = () => {
           <div className="">
             <NavBar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
           </div>
-          <div className="relative">
+          <div className="">
             <SearchContent menuOpen={menuOpen} />
           </div>
         </div>
