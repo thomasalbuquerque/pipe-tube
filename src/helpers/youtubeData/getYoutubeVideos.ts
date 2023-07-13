@@ -1,13 +1,7 @@
-const axios = require('axios');
+import axios from 'axios';
 import { AxiosResponse } from 'axios';
 
-//This file is not being used, but it is a good example of how to get data from the Youtube API. I used it once to get a sample of 40 videos to use in the app.
-
 const apiKey = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY;
-const numberOfVideos = 4;
-const keyword = 'education';
-const regionCode = 'UK';
-const videoCategoryId = '27';
 
 const removeDuplicatedIds = (videoIds: string[]) => {
   const uniqueVideoIds = videoIds.filter((v, index) => {
@@ -16,9 +10,9 @@ const removeDuplicatedIds = (videoIds: string[]) => {
   return uniqueVideoIds;
 }
 
-export async function getYoutubeData() {
+export async function getYoutubeVideos(keyword: string | null, numberOfVideos: number) {
 
-  const resSearch: AxiosResponse = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=id&type=video&maxResults=${numberOfVideos}&q=${keyword}&regionCode=${regionCode}&videoCategoryId=${videoCategoryId}&key=${apiKey}`)
+  const resSearch: AxiosResponse = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=id&type=video&maxResults=${numberOfVideos}&q=${keyword}&key=${apiKey}`)
 
   const videoItems = resSearch.data.items;
   const videoIds: string[] = videoItems.map((video: {
@@ -30,9 +24,8 @@ export async function getYoutubeData() {
   const uniqueVideoIds = removeDuplicatedIds(videoIds);
 
   let videosObjects: Video[] = [];
-  let counter = 0
 
-  uniqueVideoIds.forEach(async (videoId: string) => {
+  for (const videoId of uniqueVideoIds) {
     const response = await axios.get(`https://www.googleapis.com/youtube/v3/videos?part=snippet%2Cstatistics&id=${videoId}&key=${apiKey}`)
     const video = response.data.items[0]
 
@@ -59,8 +52,6 @@ export async function getYoutubeData() {
 
     videosObjects.push(newObject);
 
-    const json = JSON.stringify(videosObjects, null, 2);
-
-    return videosObjects;
-  })
+  }
+  return videosObjects;
 }
