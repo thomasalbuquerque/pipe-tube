@@ -51,10 +51,8 @@ const NavBar = ({ menuOpen, setMenuOpen }: props) => {
         />
         <ul>
           {menuItems.map((item, index) => (
-            <Link href={item.href}>
-              <li
-                key={index}
-                className="mt-6 flex h-8 items-center text-customGray xsm:mt-8">
+            <Link href={item.href} key={index}>
+              <li className="mt-6 flex h-8 items-center text-customGray xsm:mt-8">
                 <span className="mr-2 text-lg xsm:mr-4 xsm:text-2xl">
                   {item.icon}
                 </span>

@@ -10,27 +10,16 @@ import Spinner from '../Spinner';
 interface props {
   menuOpen: boolean;
   videoId: string;
+  videoObj: Video;
 }
-const VideoPageContent = ({ menuOpen, videoId }: props) => {
-  const [allVideos, setVideos] = useState<Video[]>([]);
+const VideoPageContent = ({ menuOpen, videoId, videoObj }: props) => {
   const [recommendedVideos, setRecommendedVideos] = useState<Video[]>([]);
-  const [currentVideo, setcurrentVideo] = useState<Video>();
 
   useEffect(() => {
-    setVideos(shuffleArray(JSON.parse(JSON.stringify(videos_data)), 50));
-  }, []);
-
-  useEffect(() => {
-    if (!allVideos) return;
-    setcurrentVideo(
-      allVideos.find((video: Video) => video.videoId === videoId)
+    setRecommendedVideos(
+      shuffleArray(JSON.parse(JSON.stringify(videos_data)), 12)
     );
-  }, [allVideos]);
-
-  useEffect(() => {
-    if (!currentVideo) return;
-    setRecommendedVideos(allVideos.slice(0, 12));
-  }, [currentVideo]);
+  }, []);
 
   return (
     <>
@@ -40,13 +29,13 @@ const VideoPageContent = ({ menuOpen, videoId }: props) => {
         )}>
         <div className="flex  w-full flex-col  items-start xl:w-2/3 2xl:w-3/4">
           <VideoPlayer videoId={videoId} />
-          {currentVideo ? (
+          {videoObj ? (
             <div>
-              <h1 className="mt-4 text-xl">{currentVideo.videoTitle}</h1>
+              <h1 className="mt-4 text-xl">{videoObj.videoTitle}</h1>
               <div className="mt-3 flex items-center gap-5">
                 <div className="flex items-center gap-2">
                   <img src="/channel-profile-pic.png" alt="" />
-                  <div className="font-medium">{currentVideo.channelName}</div>
+                  <div className="font-medium">{videoObj.channelName}</div>
                 </div>
                 <button className="h-8 w-24 rounded-md border border-customGray bg-accent font-medium text-lightOrangeBG">
                   Subscribe
@@ -63,14 +52,14 @@ const VideoPageContent = ({ menuOpen, videoId }: props) => {
                 <div className="m-3 mb-4 flex items-center justify-between">
                   <div className="text-sm font-medium">Description</div>
                   <div className="text-sm font-medium">
-                    {formatDate(currentVideo.uploadDate)} |{' '}
-                    {formatViewCount(currentVideo.viewCount)}
+                    {formatDate(videoObj.uploadDate)} |{' '}
+                    {formatViewCount(videoObj.viewCount)}
                     {'  '}
                     views
                   </div>
                 </div>
                 <div className="m-3 text-sm font-normal">
-                  {currentVideo.description.split('\n').map((line, index) => (
+                  {videoObj.description.split('\n').map((line, index) => (
                     <React.Fragment key={index}>
                       {line}
                       <br />

@@ -5,9 +5,12 @@ interface props {
   video: Video;
 }
 const CardVideo = ({ video }: props) => {
+  const handleClick = () => {
+    sessionStorage.setItem(`VideoId: ${video.videoId}`, JSON.stringify(video));
+  };
   return (
     <>
-      <Link href={`/video/${video.videoId}`}>
+      <Link href={`/video/${video.videoId}`} onClick={handleClick}>
         <div className="flex h-auto w-96 flex-col text-customGray">
           <div className="relative flex h-[13.5rem] w-96 items-center justify-center overflow-hidden rounded-lg">
             <img
