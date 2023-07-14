@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { HiOutlineHome } from 'react-icons/hi';
 import { PiUsers } from 'react-icons/pi';
@@ -11,15 +11,31 @@ interface props {
   menuOpen: boolean;
   setMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
+const menuItems = [
+  { title: 'Home', icon: <HiOutlineHome /> },
+  { title: 'Subscriptions', icon: <PiUserList /> },
+  { title: 'Liked Videos', icon: <AiOutlineLike /> },
+  { title: 'Creators', icon: <PiUsers /> },
+  { title: 'Help', icon: <TbHelp /> },
+];
 
 const NavBar = ({ menuOpen, setMenuOpen }: props) => {
-  const menuItems = [
-    { title: 'Home', icon: <HiOutlineHome /> },
-    { title: 'Subscriptions', icon: <PiUserList /> },
-    { title: 'Liked Videos', icon: <AiOutlineLike /> },
-    { title: 'Creators', icon: <PiUsers /> },
-    { title: 'Help', icon: <TbHelp /> },
-  ];
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [menuRef, setMenuOpen]);
+
   return (
     <>
       <div
@@ -27,7 +43,8 @@ const NavBar = ({ menuOpen, setMenuOpen }: props) => {
           'fixed z-10 h-screen bg-lightOrangeBG pl-3 pt-3 duration-200 xsm:p-5',
           menuOpen && 'w-36 border-r border-lightGray xsm:w-44',
           !menuOpen && 'w-12 xsm:w-16'
-        )}>
+        )}
+        ref={menuRef}>
         <RxHamburgerMenu
           className="cursor-pointer text-lg text-accent xsm:text-2xl"
           onClick={() => setMenuOpen(!menuOpen)}
