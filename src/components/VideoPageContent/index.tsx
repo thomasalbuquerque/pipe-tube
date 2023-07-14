@@ -25,12 +25,12 @@ const VideoPageContent = ({ menuOpen, videoId, videoObj }: props) => {
     <>
       <div
         className={clsx(
-          'absolute left-12 z-0 flex flex-wrap items-start justify-between gap-4 pr-4 duration-200 xsm:left-16 xsm:p-5'
+          'absolute left-12 z-0 flex w-[96%] flex-wrap items-start justify-between gap-4 duration-200 xsm:left-16 xsm:p-5'
         )}>
-        <div className="flex  w-full flex-col  items-start xl:w-2/3 2xl:w-3/4">
+        <div className="flex w-full flex-col items-start xl:w-2/3 2xl:w-3/4">
           <VideoPlayer videoId={videoId} />
           {videoObj ? (
-            <div>
+            <div className="w-full">
               <h1 className="mt-4 text-xl">{videoObj.videoTitle}</h1>
               <div className="mt-3 flex items-center gap-5">
                 <div className="flex items-center gap-2">
@@ -48,17 +48,19 @@ const VideoPageContent = ({ menuOpen, videoId, videoObj }: props) => {
                 </button>
               </div>
 
-              <div className="mt-5 h-fit rounded-md bg-lightOrange">
-                <div className="m-3 mb-4 flex items-center justify-between">
-                  <div className="text-sm font-medium">Description</div>
-                  <div className="text-sm font-medium">
+              <div className="mt-5 h-fit w-80 rounded-md bg-lightOrange xsm:w-full">
+                <div className="m-3 mb-4 flex flex-col-reverse items-start justify-between xsm:flex-row xsm:items-center">
+                  <div className="mt-2 text-sm font-medium xsm:mt-0">
+                    Description
+                  </div>
+                  <div className="mt-2 text-sm font-medium xsm:mt-0">
                     {formatDate(videoObj.uploadDate)} |{' '}
                     {formatViewCount(videoObj.viewCount)}
                     {'  '}
                     views
                   </div>
                 </div>
-                <div className="m-3 text-sm font-normal">
+                <div className="m-3 break-words text-sm font-normal ">
                   {videoObj.description.split('\n').map((line, index) => (
                     <React.Fragment key={index}>
                       {line}
