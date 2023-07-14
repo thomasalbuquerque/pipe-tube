@@ -44,7 +44,7 @@ const NoteMessage = () => {
           require backend development, and the focus of this website&apos;s
           development, for now, is to enhance my frontend skills.
         </p>
-        <p className="mt-5">
+        <p className="mt-5 text-sm md:text-base">
           You can access the files at{' '}
           <a
             href="https://github.com/thomasalbuquerque/pipe-tube"
