@@ -16,8 +16,8 @@ const SearchContent = ({ menuOpen }: props) => {
 
   async function fetchVideos() {
     const keyword = searchParams.get('keyword');
-    const videosRes = await getYoutubeVideos(keyword, 5);
-    // const videosRes = await getYoutubeVideos_Simulated(keyword, 5);
+    const videosRes = await getYoutubeVideos(keyword, 8);
+    // const videosRes = await getYoutubeVideos_Simulated(keyword, 8);
     setVideos(videosRes);
   }
 
