@@ -30,8 +30,11 @@ const SearchContent = ({ menuOpen }: props) => {
       <div className="flex items-center justify-center">
         <div
           className={clsx(
-            'ml-10 flex w-3/4 flex-col gap-5 pr-4 pt-3 duration-200 xsm:p-5 lg:ml-48'
+            'ml-10 flex w-3/4 flex-col gap-5 pr-4 pt-3 duration-200 xsm:p-5 lg:ml-96'
           )}>
+          <h1 className="text-2xl font-semibold text-customGray">
+            Search Results
+          </h1>
           {videos ? (
             videos.map((video: Video) => (
               <CardVideoSearch key={video.videoId} video={video} />
