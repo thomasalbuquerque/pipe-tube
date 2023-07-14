@@ -8,13 +8,13 @@ import ToastNote from '@/components/ToastNote';
 export default function Home() {
   const [menuOpen, setMenuOpen] = React.useState(false);
   const [toastShown, setToastShown] = React.useState(false);
-  const toastShownString = sessionStorage.getItem('Toast Shown: ');
+  const toastShownString = sessionStorage.getItem('toast-shown');
 
   useEffect(() => {
     if (toastShownString == 'true') {
       setToastShown(true);
     } else {
-      sessionStorage.setItem('Toast Shown: ', 'true');
+      sessionStorage.setItem('toast-shown', 'true');
     }
   }, []);
 
