@@ -49,11 +49,11 @@ const VideoPageContent = ({ menuOpen, videoId, videoObj }: props) => {
               </div>
 
               <div className="mt-5 h-fit w-80 rounded-md bg-lightOrange xsm:w-full">
-                <div className="m-3 mb-4 flex flex-col-reverse items-start justify-between xsm:flex-row xsm:items-center">
-                  <div className="mt-2 text-sm font-medium xsm:mt-0">
+                <div className="mx-3 mb-4 mt-2 flex flex-col-reverse items-start justify-between xsm:flex-row xsm:items-center">
+                  <div className="pt-2 text-sm font-medium xsm:mt-0">
                     Description
                   </div>
-                  <div className="mt-2 text-sm font-medium xsm:mt-0">
+                  <div className="pt-2 text-sm font-medium xsm:mt-0">
                     {formatDate(videoObj.uploadDate)} |{' '}
                     {formatViewCount(videoObj.viewCount)}
                     {'  '}

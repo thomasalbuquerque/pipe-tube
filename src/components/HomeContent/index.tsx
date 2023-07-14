@@ -24,8 +24,7 @@ const HomeContent = ({ menuOpen }: props) => {
       <div
         className={clsx(
           'absolute flex flex-wrap items-center justify-center gap-5 pr-4 pt-3 duration-200 xsm:p-5',
-          menuOpen && `left-32 xsm:left-44`,
-          !menuOpen && `left-12 xsm:left-16`
+          `left-12 xsm:left-16`
         )}>
         {videos.map((video: Video) => (
           <CardVideo key={video.videoId} video={video} />
