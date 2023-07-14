@@ -41,7 +41,7 @@ const NoteMessage = () => {
         </ul>
         <p className="mt-5 text-sm md:text-base">
           I have chosen not to develop these features as they would primarily
-          require backend development, and the focus of this website's
+          require backend development, and the focus of this website&apos;s
           development, for now, is to enhance my frontend skills.
         </p>
         <p className="mt-5">
