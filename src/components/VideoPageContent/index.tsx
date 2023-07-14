@@ -84,7 +84,10 @@ const VideoPageContent = ({ menuOpen, videoId }: props) => {
           )}
           {/*  */}
         </div>
-        <div className="mr-4 flex h-[50rem] w-96 flex-col items-center gap-5">
+        <div className="mr-4 flex h-[50rem] w-96 flex-col gap-5">
+          <h3 className="text-2xl font-semibold text-customGray">
+            Recommended Videos
+          </h3>
           {recommendedVideos.map((video: Video) => (
             <CardVideo key={video.videoId} video={video} />
           ))}
