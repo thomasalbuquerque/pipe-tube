@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from '@/components/Header';
 import HomeContent from '@/components/HomeContent';
 import NavBar from '@/components/NavBar';
@@ -7,6 +7,17 @@ import ToastNote from '@/components/ToastNote';
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = React.useState(false);
+  const [toastShown, setToastShown] = React.useState(false);
+  const toastShownString = sessionStorage.getItem('Toast Shown: ');
+
+  useEffect(() => {
+    if (toastShownString == 'true') {
+      setToastShown(true);
+    } else {
+      sessionStorage.setItem('Toast Shown: ', 'true');
+    }
+  }, []);
+
   return (
     <>
       <main className="bg-lightOrangeBG">
@@ -21,7 +32,7 @@ export default function Home() {
             <HomeContent menuOpen={menuOpen} />
           </div>
         </div>
-        <ToastNote />
+        {!toastShown ? <ToastNote /> : ''}
       </main>
     </>
   );
