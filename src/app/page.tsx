@@ -3,6 +3,7 @@ import React from 'react';
 import Header from '@/components/Header';
 import HomeContent from '@/components/HomeContent';
 import NavBar from '@/components/NavBar';
+import ToastNote from '@/components/ToastNote';
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = React.useState(false);
@@ -20,6 +21,7 @@ export default function Home() {
             <HomeContent menuOpen={menuOpen} />
           </div>
         </div>
+        <ToastNote />
       </main>
     </>
   );
