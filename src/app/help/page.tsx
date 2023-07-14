@@ -18,7 +18,7 @@ const Page = () => {
           <div className="">
             <NavBar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
           </div>
-          <div className="relative">
+          <div className="relative w-4/5">
             <div className="absolute left-32 top-12 text-customGray">
               <h3 className="mx-6 text-3xl font-semibold">Note</h3>
               <NoteMessage />
