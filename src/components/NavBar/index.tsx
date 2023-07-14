@@ -6,17 +6,17 @@ import { PiUserList } from 'react-icons/pi';
 import { TbHelp } from 'react-icons/tb';
 import { AiOutlineLike } from 'react-icons/ai';
 import clsx from 'clsx';
+import Link from 'next/link';
 
 interface props {
   menuOpen: boolean;
   setMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 const menuItems = [
-  { title: 'Home', icon: <HiOutlineHome /> },
-  { title: 'Subscriptions', icon: <PiUserList /> },
-  { title: 'Liked Videos', icon: <AiOutlineLike /> },
-  { title: 'Creators', icon: <PiUsers /> },
-  { title: 'Help', icon: <TbHelp /> },
+  { title: 'Home', icon: <HiOutlineHome />, href: '/' },
+  { title: 'Subscriptions', icon: <PiUserList />, href: '/subscriptions' },
+  { title: 'Liked Videos', icon: <AiOutlineLike />, href: '/liked' },
+  { title: 'Help', icon: <TbHelp />, href: '/help' },
 ];
 
 const NavBar = ({ menuOpen, setMenuOpen }: props) => {
@@ -51,21 +51,23 @@ const NavBar = ({ menuOpen, setMenuOpen }: props) => {
         />
         <ul>
           {menuItems.map((item, index) => (
-            <li
-              key={index}
-              className="mt-6 flex h-8 items-center text-customGray xsm:mt-8">
-              <span className="mr-2 text-lg xsm:mr-4 xsm:text-2xl">
-                {item.icon}
-              </span>
-              <span
-                className={clsx(
-                  'whitespace-nowrap font-sans text-xs xsm:text-sm ',
-                  !menuOpen && 'invisible',
-                  menuOpen && ''
-                )}>
-                {item.title}
-              </span>
-            </li>
+            <Link href={item.href}>
+              <li
+                key={index}
+                className="mt-6 flex h-8 items-center text-customGray xsm:mt-8">
+                <span className="mr-2 text-lg xsm:mr-4 xsm:text-2xl">
+                  {item.icon}
+                </span>
+                <span
+                  className={clsx(
+                    'whitespace-nowrap font-sans text-xs xsm:text-sm ',
+                    !menuOpen && 'invisible',
+                    menuOpen && ''
+                  )}>
+                  {item.title}
+                </span>
+              </li>
+            </Link>
           ))}
         </ul>
       </div>
