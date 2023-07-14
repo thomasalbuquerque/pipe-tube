@@ -1,6 +1,15 @@
 import Link from 'next/link';
-import React from 'react';
+import React, { useRef, useState } from 'react';
 const Header = () => {
+  const [searchValue, setSearchValue] = useState('');
+  const inputRef = useRef<HTMLInputElement>(null);
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      const link = inputRef.current?.nextSibling as HTMLAnchorElement;
+      link.click();
+    }
+  };
+
   return (
     <>
       <div
@@ -18,18 +27,24 @@ const Header = () => {
         <div
           id="searchBar"
           className="flex h-7 w-2/4 items-center rounded-lg border border-solid border-lightGray bg-white px-4 py-1 xsm:h-9 md:justify-between md:rounded-xl xl:w-1/4">
-          <form action="/send-data-here" method="post" className="w-full">
+          <div className="flex w-full items-center justify-center">
             <input
               className="h-full w-full text-customGray focus:outline-none"
               type="text"
               placeholder="Search"
+              value={searchValue}
+              onChange={(e) => setSearchValue(e.target.value)}
+              ref={inputRef}
+              onKeyDown={handleKeyDown}
             />
-          </form>
-          <img
-            className="h-3 w-3 xsm:h-4 xsm:w-4 md:mx-1"
-            src="/magnifier-glass.png"
-            alt=""
-          />
+            <Link href={`/search?keyword=${searchValue} `} shallow={true}>
+              <img
+                className="h-3 w-3 xsm:h-4 xsm:w-4 md:mx-1"
+                src="/magnifier-glass.png"
+                alt=""
+              />
+            </Link>
+          </div>
         </div>
         <div
           id="rightButtons"

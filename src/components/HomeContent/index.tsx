@@ -1,25 +1,24 @@
 import React, { use, useEffect, useState } from 'react';
-import { MenuWidth } from '@/utils/MenuWidth';
 import clsx from 'clsx';
 import CardVideo from '../CardVideo';
-import { getYoutubeData } from '@/helpers/youtubeData/getVideosIds';
-import videos_data from '@/utils/videos_data.json';
-import { shuffleArray } from '@/helpers/functions';
+import { getYoutubeVideos_Simulated } from '@/helpers/youtubeData/getYoutubeVideos_Simulated';
 interface props {
   menuOpen: boolean;
 }
 
-let counter = 0;
-if (counter === 0) {
-  // getYoutubeData();
-  counter++;
-}
-
 const HomeContent = ({ menuOpen }: props) => {
   const [videos, setVideos] = useState<Video[]>([]);
+
+  async function fetchVideos() {
+    // const videosRes = await getYoutubeVideos('', 28);
+    const videosRes = await getYoutubeVideos_Simulated('', 28);
+    setVideos(videosRes);
+  }
+
   useEffect(() => {
-    setVideos(shuffleArray(JSON.parse(JSON.stringify(videos_data)), 30));
+    fetchVideos();
   }, []);
+
   return (
     <>
       <div
