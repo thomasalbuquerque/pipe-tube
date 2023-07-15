@@ -10,7 +10,7 @@ const Page = () => {
   const [menuOpen, setMenuOpen] = React.useState(false);
   return (
     <>
-      <main className="bg-lightOrangeBG">
+      <main className="bg-veryLightOrange">
         <div className="h-20">
           <Header />
         </div>

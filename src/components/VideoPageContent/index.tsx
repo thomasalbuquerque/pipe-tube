@@ -37,10 +37,10 @@ const VideoPageContent = ({ menuOpen, videoId, videoObj }: props) => {
                   <img src="/channel-profile-pic.png" alt="" />
                   <div className="font-medium">{videoObj.channelName}</div>
                 </div>
-                <button className="h-8 w-24 rounded-md border border-customGray bg-accent px-2 font-medium text-lightOrangeBG">
+                <button className="text-veryLightOrange h-8 w-24 rounded-md border border-customGray bg-accent px-2 font-medium">
                   Subscribe
                 </button>
-                <button className="mr-2 flex h-8 w-24 items-center justify-center gap-1 rounded-md border border-customGray bg-accent px-2 font-medium text-lightOrangeBG">
+                <button className="text-veryLightOrange mr-2 flex h-8 w-24 items-center justify-center gap-1 rounded-md border border-customGray bg-accent px-2 font-medium">
                   <span>Like</span>
                   <span>
                     <AiOutlineLike />{' '}
