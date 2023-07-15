@@ -48,7 +48,7 @@ const VideoPageContent = ({ menuOpen, videoId, videoObj }: props) => {
                 </button>
               </div>
 
-              <div className="mt-5 h-fit w-80 rounded-md bg-lightOrange xsm:w-full">
+              <div className="mt-5 h-fit w-full rounded-md bg-lightOrange xsm:w-full">
                 <div className="mx-3 mb-4 mt-2 flex flex-col-reverse items-start justify-between xsm:flex-row xsm:items-center">
                   <div className="pt-2 text-sm font-medium xsm:mt-0">
                     Description
