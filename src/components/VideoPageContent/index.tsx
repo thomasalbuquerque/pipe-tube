@@ -25,7 +25,7 @@ const VideoPageContent = ({ menuOpen, videoId, videoObj }: props) => {
     <>
       <div
         className={clsx(
-          'absolute left-12 z-0 flex w-[96%] flex-wrap items-start justify-between gap-4 duration-200 xsm:left-16 xsm:p-5'
+          'absolute z-0 flex w-[96%] flex-wrap items-start justify-between gap-4 duration-200 xsm:p-5'
         )}>
         <div className="flex w-full flex-col items-start xl:w-2/3 2xl:w-3/4">
           <VideoPlayer videoId={videoId} />
