@@ -10,7 +10,7 @@ const ToastNote = () => {
     <>
       <div
         className={clsx(
-          'fixed bottom-10 left-[10%] right-1/4 top-28 z-50 h-auto w-4/5 overflow-y-auto rounded-md border border-customGray bg-lightOrangeBG pb-9 pt-8 lg:left-1/4 lg:top-32 lg:w-1/2 2xl:bottom-auto',
+          'bg-veryLightOrange fixed bottom-10 left-[10%] right-1/4 top-28 z-50 h-auto w-4/5 overflow-y-auto rounded-md border border-customGray pb-9 pt-8 lg:left-1/4 lg:top-32 lg:w-1/2 2xl:bottom-auto',
           close && 'hidden'
         )}>
         <div className="mx-6 flex items-center justify-between text-customGray">

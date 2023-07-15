@@ -11,8 +11,8 @@ module.exports = {
         customGray: '#4d4d4d',
         lightGray: '#cccccc',
         lightOrange: '#fff1e7',
+        veryLightOrange: '#fff7f1',
         accent: '#eb6900',
-        lightOrangeBG: '#fff7f1',
       }
       , backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

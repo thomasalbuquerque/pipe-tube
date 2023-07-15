@@ -40,9 +40,9 @@ const NavBar = ({ menuOpen, setMenuOpen }: props) => {
     <>
       <div
         className={clsx(
-          'fixed z-10 h-screen pl-3 pt-3 duration-200 xsm:p-5',
+          'h-screen pl-3 pt-3 duration-200 xsm:p-5',
           menuOpen && 'w-36 border-r border-lightGray bg-lightOrange xsm:w-44',
-          !menuOpen && 'w-12 xsm:w-16'
+          !menuOpen && 'bg-veryLightOrange w-12 xsm:w-16'
         )}
         ref={menuRef}>
         <RxHamburgerMenu
