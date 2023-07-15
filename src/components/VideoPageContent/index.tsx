@@ -32,20 +32,22 @@ const VideoPageContent = ({ menuOpen, videoId, videoObj }: props) => {
           {videoObj ? (
             <div className="w-full">
               <h1 className="mt-4 text-xl">{videoObj.videoTitle}</h1>
-              <div className="mt-3 flex items-center gap-2">
+              <div className="mt-3 flex flex-wrap items-center gap-4">
                 <div className="flex items-center gap-2">
                   <img src="/channel-profile-pic.png" alt="" />
                   <div className="font-medium">{videoObj.channelName}</div>
                 </div>
-                <button className="text-veryLightOrange h-8 w-24 rounded-md border border-customGray bg-accent px-2 font-medium">
-                  Subscribe
-                </button>
-                <button className="text-veryLightOrange mr-2 flex h-8 w-24 items-center justify-center gap-1 rounded-md border border-customGray bg-accent px-2 font-medium">
-                  <span>Like</span>
-                  <span>
-                    <AiOutlineLike />{' '}
-                  </span>
-                </button>
+                <div className="flex items-center gap-2">
+                  <button className="h-8 w-20 rounded-md border border-customGray bg-accent text-xs font-medium text-veryLightOrange xsm:w-24 xsm:px-2 xsm:text-sm">
+                    Subscribe
+                  </button>
+                  <button className="flex h-8 w-20 items-center justify-center gap-1 rounded-md border border-customGray bg-accent text-xs font-medium text-veryLightOrange xsm:mr-2 xsm:w-24 xsm:px-2 xsm:text-sm">
+                    <span>Like</span>
+                    <span>
+                      <AiOutlineLike />{' '}
+                    </span>
+                  </button>
+                </div>
               </div>
 
               <div className="mt-5 h-fit w-full rounded-md bg-lightOrange xsm:w-full">
