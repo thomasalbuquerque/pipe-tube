@@ -60,7 +60,7 @@ const VideoPageContent = ({ menuOpen, videoId, videoObj }: props) => {
                     views
                   </div>
                 </div>
-                <div className="m-3 break-words text-sm font-normal ">
+                <div className="m-3 min-w-0 break-words text-sm font-normal">
                   {videoObj.description.split('\n').map((line, index) => (
                     <React.Fragment key={index}>
                       {line}
