@@ -23,15 +23,15 @@ export default function Home() {
 
   return (
     <>
-      <main className="bg-lightOrangeBG">
+      <main className="">
         <div className="h-20">
           <Header />
         </div>
         <div className="">
-          <div className="">
+          <div className="fixed z-10">
             <NavBar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
           </div>
-          <div className="relative">
+          <div className="ml-10">
             <HomeContent menuOpen={menuOpen} />
           </div>
         </div>

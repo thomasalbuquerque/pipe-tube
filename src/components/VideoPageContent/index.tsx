@@ -25,14 +25,14 @@ const VideoPageContent = ({ menuOpen, videoId, videoObj }: props) => {
     <>
       <div
         className={clsx(
-          'absolute z-0 flex w-[96%] flex-wrap items-start justify-between gap-4 duration-200 xsm:p-5'
+          'flex w-full flex-col items-center justify-center gap-7 duration-200 lg:flex-row lg:items-start '
         )}>
         <div className="flex w-full flex-col items-start xl:w-2/3 2xl:w-3/4">
           <VideoPlayer videoId={videoId} />
           {videoObj ? (
             <div className="w-full">
               <h1 className="mt-4 text-xl">{videoObj.videoTitle}</h1>
-              <div className="mt-3 flex items-center gap-5">
+              <div className="mt-3 flex items-center gap-2">
                 <div className="flex items-center gap-2">
                   <img src="/channel-profile-pic.png" alt="" />
                   <div className="font-medium">{videoObj.channelName}</div>
@@ -40,7 +40,7 @@ const VideoPageContent = ({ menuOpen, videoId, videoObj }: props) => {
                 <button className="h-8 w-24 rounded-md border border-customGray bg-accent px-2 font-medium text-lightOrangeBG">
                   Subscribe
                 </button>
-                <button className="flex h-8 w-24 items-center justify-center gap-1 rounded-md border border-customGray bg-accent px-2 font-medium text-lightOrangeBG">
+                <button className="mr-2 flex h-8 w-24 items-center justify-center gap-1 rounded-md border border-customGray bg-accent px-2 font-medium text-lightOrangeBG">
                   <span>Like</span>
                   <span>
                     <AiOutlineLike />{' '}
@@ -60,7 +60,7 @@ const VideoPageContent = ({ menuOpen, videoId, videoObj }: props) => {
                     views
                   </div>
                 </div>
-                <div className="m-3 min-w-0 break-words text-sm font-normal">
+                <div className="m-3 break-words text-sm font-normal ">
                   {videoObj.description.split('\n').map((line, index) => (
                     <React.Fragment key={index}>
                       {line}
@@ -75,7 +75,7 @@ const VideoPageContent = ({ menuOpen, videoId, videoObj }: props) => {
           )}
           {/*  */}
         </div>
-        <div className="mr-4 flex h-[50rem] w-96 flex-col gap-5">
+        <div className="w-[17rem ] mr-4 flex h-[50rem] flex-col gap-5">
           <h3 className="text-2xl font-semibold text-customGray">
             Recommended Videos
           </h3>

@@ -24,10 +24,10 @@ export default function Page() {
           <Header />
         </div>
         <div className="">
-          <div className="">
+          <div className="fixed z-10">
             <NavBar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
           </div>
-          <div className="relative">
+          <div className="ml-14 pt-2 xsm:ml-20 xsm:pt-6">
             <VideoPageContent
               menuOpen={menuOpen}
               videoId={videoId}

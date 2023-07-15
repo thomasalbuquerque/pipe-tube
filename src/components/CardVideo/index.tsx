@@ -11,8 +11,8 @@ const CardVideo = ({ video }: props) => {
   return (
     <>
       <Link href={`/video/${video.videoId}`} onClick={handleClick}>
-        <div className="flex h-auto w-80 flex-col text-customGray xsm:w-96">
-          <div className="relative flex h-[11.25rem] w-80 items-center justify-center overflow-hidden rounded-lg xsm:h-[13.5rem] xsm:w-96">
+        <div className="flex h-auto w-[17rem] flex-col text-customGray xsm:w-96">
+          <div className="relative flex h-[9.56rem] w-[17rem] items-center justify-center overflow-hidden rounded-lg xsm:h-[13.5rem] xsm:w-96">
             <img
               alt={`Video image thumbnail from video title: ${video.videoTitle}`}
               width={384}
