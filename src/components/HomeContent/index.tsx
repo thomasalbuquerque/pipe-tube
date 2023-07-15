@@ -23,9 +23,11 @@ const HomeContent = ({ menuOpen }: props) => {
     <>
       <div
         className={clsx(
-          'flex flex-wrap items-center justify-center gap-5 pt-3 duration-200 xsm:p-5 xsm:pr-4'
-          // `left-12 xsm:left-16`
+          'flex flex-col flex-wrap items-center justify-center gap-5 pt-3 duration-200 xsm:p-5 xsm:pr-4 sm:flex-row'
         )}>
+        <h1 className="pt-2 text-2xl font-semibold text-customGray sm:hidden">
+          Home
+        </h1>
         {videos.map((video: Video) => (
           <CardVideo key={video.videoId} video={video} />
         ))}

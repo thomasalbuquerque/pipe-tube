@@ -49,8 +49,8 @@ const NoteMessage = () => {
           <a
             href="https://github.com/thomasalbuquerque/pipe-tube"
             target="_blank"
-            className="font-medium text-accent">
-            https://github.com/thomasalbuquerque/pipe-tube
+            className="break-words font-medium text-accent">
+            github.com/thomasalbuquerque/pipe-tube
           </a>
         </p>
         <p className="mt-5 text-sm md:text-base">

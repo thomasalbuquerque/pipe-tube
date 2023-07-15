@@ -15,11 +15,11 @@ const Page = () => {
           <Header />
         </div>
         <div className="">
-          <div className="">
+          <div className="fixed z-10">
             <NavBar menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
           </div>
-          <div className="relative w-4/5">
-            <div className="absolute left-32 top-12 text-customGray">
+          <div className="ml-14 w-4/5 pt-2 xsm:ml-20 xsm:pt-6">
+            <div className="text-customGray">
               <h3 className="mx-6 text-3xl font-semibold">Note</h3>
               <NoteMessage />
             </div>
