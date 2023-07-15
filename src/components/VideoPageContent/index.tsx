@@ -4,7 +4,7 @@ import VideoPlayer from '../VideoPlayer';
 import videos_data from '@/utils/videos_data.json';
 import { formatDate, formatViewCount, shuffleArray } from '@/helpers/functions';
 import CardVideo from '../CardVideo';
-import { AiOutlineLike } from 'react-icons/ai';
+import { AiFillLike } from 'react-icons/ai';
 import Spinner from '../Spinner';
 
 interface props {
@@ -44,7 +44,7 @@ const VideoPageContent = ({ menuOpen, videoId, videoObj }: props) => {
                   <button className="flex h-8 w-20 items-center justify-center gap-1 rounded-md border border-customGray bg-accent text-xs font-medium text-veryLightOrange xsm:mr-2 xsm:w-24 xsm:px-2 xsm:text-sm">
                     <span>Like</span>
                     <span>
-                      <AiOutlineLike />{' '}
+                      <AiFillLike />{' '}
                     </span>
                   </button>
                 </div>
