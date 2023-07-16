@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
+import { TbHelp } from 'react-icons/tb';
 
 const NoteMessage = () => {
   return (
@@ -11,6 +12,14 @@ const NoteMessage = () => {
         <p className="mt-5 text-sm md:text-base">
           This is an experimental website created as a video-watching platform
           with the intention of improving my frontend skills.
+        </p>
+        <p className="mt-5 flex flex-wrap whitespace-pre-wrap text-sm md:text-base">
+          <span className="font-semibold">You can read this later at </span>
+          <Link href={'/help'}>
+            <span className="flex items-center font-semibold text-accent">
+              <span>Help Page </span> <TbHelp />
+            </span>
+          </Link>
         </p>
         <p className="mt-5 text-sm md:text-base">
           Certain sections of the website fetch YouTube videos dynamically
@@ -52,12 +61,6 @@ const NoteMessage = () => {
             className="break-words font-medium text-accent">
             github.com/thomasalbuquerque/pipe-tube
           </a>
-        </p>
-        <p className="mt-5 text-sm md:text-base">
-          This information is also available on the{' '}
-          <Link href={'/help'}>
-            <span className="font-medium text-accent">Help Page</span>.
-          </Link>
         </p>
       </div>
     </>

@@ -29,7 +29,7 @@ const Header = () => {
           className="flex h-7 w-2/4 items-center rounded-lg border border-solid border-lightGray bg-white px-4 py-1 xsm:h-9 md:justify-between md:rounded-xl xl:w-1/4">
           <div className="flex w-full items-center justify-center">
             <input
-              className="h-full w-full text-customGray focus:outline-none"
+              className="h-full w-full text-customGray caret-accent focus:outline-none"
               type="text"
               placeholder="Search"
               value={searchValue}

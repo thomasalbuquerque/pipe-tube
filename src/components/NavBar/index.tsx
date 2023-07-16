@@ -7,16 +7,27 @@ import { TbHelp } from 'react-icons/tb';
 import { AiOutlineLike } from 'react-icons/ai';
 import clsx from 'clsx';
 import Link from 'next/link';
+import ListItem from './ListItem';
 
 interface props {
   menuOpen: boolean;
   setMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 const menuItems = [
-  { title: 'Home', icon: <HiOutlineHome />, href: '/' },
-  { title: 'Subscriptions', icon: <PiUserList />, href: '/subscriptions' },
-  { title: 'Liked Videos', icon: <AiOutlineLike />, href: '/liked' },
-  { title: 'Help', icon: <TbHelp />, href: '/help' },
+  { title: 'Home', icon: <HiOutlineHome />, href: '/', enable: true },
+  {
+    title: 'Subscriptions',
+    icon: <PiUserList />,
+    href: '/subscriptions',
+    enable: false,
+  },
+  {
+    title: 'Liked Videos',
+    icon: <AiOutlineLike />,
+    href: '/liked',
+    enable: false,
+  },
+  { title: 'Help', icon: <TbHelp />, href: '/help', enable: true },
 ];
 
 const NavBar = ({ menuOpen, setMenuOpen }: props) => {
@@ -42,7 +53,7 @@ const NavBar = ({ menuOpen, setMenuOpen }: props) => {
         className={clsx(
           'h-screen pl-3 pt-3 duration-200 xsm:p-5',
           menuOpen && 'w-36 border-r border-lightGray bg-lightOrange xsm:w-44',
-          !menuOpen && 'bg-veryLightOrange w-12 xsm:w-16'
+          !menuOpen && 'w-12 bg-veryLightOrange xsm:w-16'
         )}
         ref={menuRef}>
         <RxHamburgerMenu
@@ -50,23 +61,15 @@ const NavBar = ({ menuOpen, setMenuOpen }: props) => {
           onClick={() => setMenuOpen(!menuOpen)}
         />
         <ul>
-          {menuItems.map((item, index) => (
-            <Link href={item.href} key={index}>
-              <li className="mt-6 flex h-8 items-center text-customGray xsm:mt-8">
-                <span className="mr-2 text-lg xsm:mr-4 xsm:text-2xl">
-                  {item.icon}
-                </span>
-                <span
-                  className={clsx(
-                    'whitespace-nowrap font-sans text-xs xsm:text-sm ',
-                    !menuOpen && 'invisible',
-                    menuOpen && ''
-                  )}>
-                  {item.title}
-                </span>
-              </li>
-            </Link>
-          ))}
+          {menuItems.map((item, index) =>
+            item.enable ? (
+              <Link href={item.href} key={index}>
+                <ListItem item={item} menuOpen={menuOpen} />
+              </Link>
+            ) : (
+              <ListItem item={item} menuOpen={menuOpen} />
+            )
+          )}
         </ul>
       </div>
     </>

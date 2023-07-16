@@ -6,6 +6,7 @@ import { formatDate, formatViewCount, shuffleArray } from '@/helpers/functions';
 import CardVideo from '../CardVideo';
 import { AiFillLike } from 'react-icons/ai';
 import Spinner from '../Spinner';
+import { getYoutubeVideos_Simulated } from '@/helpers/youtubeData/getYoutubeVideos_Simulated';
 
 interface props {
   menuOpen: boolean;
@@ -15,10 +16,13 @@ interface props {
 const VideoPageContent = ({ menuOpen, videoId, videoObj }: props) => {
   const [recommendedVideos, setRecommendedVideos] = useState<Video[]>([]);
 
+  async function fetchVideos() {
+    const videos = await getYoutubeVideos_Simulated('', 12);
+    setRecommendedVideos(videos);
+  }
+
   useEffect(() => {
-    setRecommendedVideos(
-      shuffleArray(JSON.parse(JSON.stringify(videos_data)), 12)
-    );
+    fetchVideos();
   }, []);
 
   return (
