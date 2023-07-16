@@ -1,8 +1,8 @@
 ## General Information
 
-This project aims to replicate a YouTube-like website, where I focused on practicing API consumption, page styling, and responsiveness. The technologies used in this project include React.js, Next.js, Typescript, and Tailwind.
+This project aims to replicate a YouTube-like website, where I focused on practicing API consumption, page styling, and responsiveness.
 
-I enjoyed the process and was satisfied with the final result. It provided an excellent opportunity to improve my skills in creating screens using Figma and working on overall design.
+I enjoyed the process and was satisfied with the final result. In addition to improving my programming skills, it also provided an excellent opportunity to improve my skills in creating screens using Figma and working on overall design.
 
 Upon visiting the site, users will encounter a popup that explains the site's functionalities and features, summarizing the details mentioned here.
 
@@ -23,7 +23,6 @@ This project was made with:
  - Next.js
  - Typescript
  - Tailwindcss
- - [Clsx](https://www.npmjs.com/package/clsx)
 
 ## Installation
 To begin, make sure you have Node.js with npm installed on your system. If you don't have them, please refer to the [official documentation](https://nodejs.org/en/download) for instructions on how to install them.
