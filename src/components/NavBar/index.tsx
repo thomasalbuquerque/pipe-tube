@@ -67,7 +67,9 @@ const NavBar = ({ menuOpen, setMenuOpen }: props) => {
                 <ListItem item={item} menuOpen={menuOpen} />
               </Link>
             ) : (
-              <ListItem item={item} menuOpen={menuOpen} />
+              <div key={index}>
+                <ListItem item={item} menuOpen={menuOpen} />
+              </div>
             )
           )}
         </ul>
