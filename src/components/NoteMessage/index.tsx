@@ -27,7 +27,8 @@ const NoteMessage = () => {
         <ul className="list-inside list-disc text-sm md:text-base">
           <li>
             Homepage: Displays trending videos in USA. The videos are chosen
-            from keyword search: 'trending' and regionCode: 'US'
+            from keyword search: &apos;trending&apos; and regionCode:
+            &apos;US&apos;
           </li>
           <li>Video Page: Allows users to watch selected videos</li>
           <li>
