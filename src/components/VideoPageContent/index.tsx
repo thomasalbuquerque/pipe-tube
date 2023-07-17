@@ -17,7 +17,7 @@ const VideoPageContent = ({ menuOpen, videoId, videoObj }: props) => {
   const [recommendedVideos, setRecommendedVideos] = useState<Video[]>([]);
 
   async function fetchVideos() {
-    const videos = await getYoutubeVideos_Simulated('', 12);
+    const videos = await getYoutubeVideos_Simulated('', 12, '');
     setRecommendedVideos(videos);
   }
 
