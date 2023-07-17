@@ -21,23 +21,24 @@ const NoteMessage = () => {
             </span>
           </Link>
         </p>
-        <p className="mt-5 text-sm md:text-base">
-          Certain sections of the website fetch YouTube videos dynamically
-          through the YouTube API, while others utilize static videos stored in
-          a JSON file within the project directory. This approach is chosen due
-          to the limited free usage of the YouTube API, as I do not wish to
-          incur additional costs for this experimental website.
-        </p>
         <h4 className="mb-2 mt-5 text-base font-semibold text-accent md:text-lg">
           Current Features:
         </h4>
         <ul className="list-inside list-disc text-sm md:text-base">
-          <li>Homepage: Displays static videos</li>
+          <li>
+            Homepage: Displays trending videos in USA. The videos are chosen
+            from keyword search: 'trending' and regionCode: 'US'
+          </li>
           <li>Video Page: Allows users to watch selected videos</li>
+          <li>
+            Recommended Videos: Section on the right side of the video page,
+            brings recommended videos from the YouTube API. The fetch brings
+            only 12 videos, thus limiting the usage of the API
+          </li>
           <li>
             Search Functionality: Users can search for videos. The results are
             brought from the YouTube API, and each search fetches only the first
-            8 videos, thus limiting the usage of the API
+            8 videos
           </li>
         </ul>
         <h4 className="mb-2 mt-5 text-base font-semibold text-accent md:text-lg">
