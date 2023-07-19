@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import CardVideo from '../CardVideo';
 import { getYoutubeVideos_Simulated } from '@/helpers/youtubeData/getYoutubeVideos_Simulated';
 import Spinner from '../Spinner';
+import { getYoutubeVideos } from '@/helpers/youtubeData/getYoutubeVideos';
 interface props {
   menuOpen: boolean;
 }
@@ -11,8 +12,8 @@ const HomeContent = ({ menuOpen }: props) => {
   const [videos, setVideos] = useState<Video[]>([]);
 
   async function fetchVideos() {
-    // const videosRes = await getYoutubeVideos('', 28);
-    const videosRes = await getYoutubeVideos_Simulated('', 28);
+    const videosRes = await getYoutubeVideos('trending', 28, 'US');
+    // const videosRes = await getYoutubeVideos_Simulated('', 28, 'US');
     setVideos(videosRes);
   }
 

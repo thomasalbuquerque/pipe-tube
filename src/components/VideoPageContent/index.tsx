@@ -7,6 +7,7 @@ import CardVideo from '../CardVideo';
 import { AiFillLike } from 'react-icons/ai';
 import Spinner from '../Spinner';
 import { getYoutubeVideos_Simulated } from '@/helpers/youtubeData/getYoutubeVideos_Simulated';
+import { getYoutubeVideos } from '@/helpers/youtubeData/getYoutubeVideos';
 
 interface props {
   menuOpen: boolean;
@@ -17,7 +18,8 @@ const VideoPageContent = ({ menuOpen, videoId, videoObj }: props) => {
   const [recommendedVideos, setRecommendedVideos] = useState<Video[]>([]);
 
   async function fetchVideos() {
-    const videos = await getYoutubeVideos_Simulated('', 12);
+    const videos = await getYoutubeVideos('trending', 12, 'US');
+    // const videos = await getYoutubeVideos_Simulated('', 12, '');
     setRecommendedVideos(videos);
   }
 

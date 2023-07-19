@@ -10,9 +10,12 @@ const removeDuplicatedIds = (videoIds: string[]) => {
   return uniqueVideoIds;
 }
 
-export async function getYoutubeVideos(keyword: string | null, numberOfVideos: number) {
+const videoDuration = 'medium';
 
-  const resSearch: AxiosResponse = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=id&type=video&maxResults=${numberOfVideos}&q=${keyword}&key=${apiKey}`)
+export async function getYoutubeVideos(keyword: string | null, numberOfVideos: number, regionCode: string) {
+  const hasRegionCode = regionCode ? `&regionCode=${regionCode}` : '';
+
+  const resSearch: AxiosResponse = await axios.get(`https://www.googleapis.com/youtube/v3/search?part=id&type=video&maxResults=${numberOfVideos}&q=${keyword}${hasRegionCode}&key=${apiKey}&videoDuration=${videoDuration}`)
 
   const videoItems = resSearch.data.items;
   const videoIds: string[] = videoItems.map((video: {
