@@ -25,7 +25,7 @@ This project was made with:
  - Tailwindcss
 
 ## Installation
-To begin, make sure you have Node.js 18.x or newer installed on your system. If you don't have it, please refer to the [official documentation](https://nodejs.org/en/download) for instructions on how to install it.
+To begin, make sure you have Node.js 18.x or newer installed on your system. If you don't have it, please refer to the [official documentation](https://nodejs.org/en/docs) for instructions on how to install it.
 
 Next, follow the steps below:
 
